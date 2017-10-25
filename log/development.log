@@ -2672,3 +2672,192 @@ Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 3.1ms)
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "drink_ordered", "price", "rating", "address") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Think Coffee"], ["drink_ordered", "cappuccino"], ["price", 4.0], ["rating", 5], ["address", "248 Mercer St, New York, NY 10012"]]
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:32:12 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (0.65ms)
+Completed 200 OK in 27ms (Views: 17.7ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:32:41 -0400
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"name"=>"Ground Central Coffee", "drink_ordered"=>"Ice Coffee", "price"=>"3.75", "rating"=>"3", "address"=>"2 Coenties Slip, New York, NY 10004", "review"=>{"name"=>"Ground Central Coffee", "drink_ordered"=>"Ice Coffee", "price"=>"3.75", "rating"=>"3", "address"=>"2 Coenties Slip, New York, NY 10004"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "drink_ordered", "price", "rating", "address") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Ground Central Coffee"], ["drink_ordered", "Ice Coffee"], ["price", 3.75], ["rating", 3], ["address", "2 Coenties Slip, New York, NY 10004"]]
+  [1m[35m (8.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 26ms (ActiveRecord: 16.7ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:32:56 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (1.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (1.34ms)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:34:22 -0400
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"name"=>"Birch Coffee", "drink_ordered"=>"Latte", "price"=>"4.75", "rating"=>"4", "address"=>"8 Spruce Street,  New York, NY 10038", "review"=>{"name"=>"Birch Coffee", "drink_ordered"=>"Latte", "price"=>"4.75", "rating"=>"4", "address"=>"8 Spruce Street,  New York, NY 10038"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "drink_ordered", "price", "rating", "address") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Birch Coffee"], ["drink_ordered", "Latte"], ["price", 4.75], ["rating", 4], ["address", "8 Spruce Street,  New York, NY 10038"]]
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 12ms (ActiveRecord: 8.8ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:34:31 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (1.35ms)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/reviews/30" for 127.0.0.1 at 2017-10-25 16:34:48 -0400
+Processing by Api::V1::ReviewsController#update as JSON
+  Parameters: {"name"=>"Birch Coffee", "drink_ordered"=>"Latte", "price"=>"3.75", "rating"=>"4", "address"=>"8 Spruce Street,  New York, NY 10038", "id"=>"30", "review"=>{"name"=>"Birch Coffee", "drink_ordered"=>"Latte", "price"=>"3.75", "rating"=>"4", "address"=>"8 Spruce Street,  New York, NY 10038"}}
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" WHERE "reviews"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "reviews" SET "price" = $1 WHERE "reviews"."id" = $2[0m  [["price", 3.75], ["id", 30]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Review (0.23ms)
+Completed 200 OK in 17ms (Views: 2.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:34:54 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (0.79ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:35:02 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (2.1ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (0.97ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:35:25 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (0.87ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:35:50 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (1.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (2.1ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:39:02 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (1.7ms)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:39:36 -0400
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"name"=>"La Colombe", "drink_ordered"=>"coffee", "price"=>"3", "rating"=>"5", "address"=>"67 Wall St, New York, NY 10005", "review"=>{"name"=>"La Colombe", "drink_ordered"=>"coffee", "price"=>"3", "rating"=>"5", "address"=>"67 Wall St, New York, NY 10005"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "drink_ordered", "price", "rating", "address") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "La Colombe"], ["drink_ordered", "coffee"], ["price", 3.0], ["rating", 5], ["address", "67 Wall St, New York, NY 10005"]]
+  [1m[35m (8.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 13ms (ActiveRecord: 9.3ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:40:19 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (1.45ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:40:55 -0400
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"name"=>"La colombe", "drink_ordered"=>"coffee", "price"=>"3", "rating"=>"5", "address"=>"67 Wall St, New York, NY 10005", "review"=>{"name"=>"La colombe", "drink_ordered"=>"coffee", "price"=>"3", "rating"=>"5", "address"=>"67 Wall St, New York, NY 10005"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "drink_ordered", "price", "rating", "address") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "La colombe"], ["drink_ordered", "coffee"], ["price", 3.0], ["rating", 5], ["address", "67 Wall St, New York, NY 10005"]]
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 12ms (ActiveRecord: 9.3ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:41:11 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (1.96ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:42:42 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (1.66ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:43:41 -0400
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"name"=>"Blue Spoon", "drink_ordered"=>"Americano", "price"=>"7.0", "rating"=>"5", "address"=>"90 William St, New York, NY 10038", "review"=>{"name"=>"Blue Spoon", "drink_ordered"=>"Americano", "price"=>"7.0", "rating"=>"5", "address"=>"90 William St, New York, NY 10038"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "drink_ordered", "price", "rating", "address") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Blue Spoon"], ["drink_ordered", "Americano"], ["price", 7.0], ["rating", 5], ["address", "90 William St, New York, NY 10038"]]
+  [1m[35m (8.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 11ms (ActiveRecord: 9.0ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:44:30 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (1.98ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:45:03 -0400
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"name"=>"Irving Farms", "drink_ordered"=>"The Farm House", "price"=>"4", "rating"=>"4", "address"=>"200 Broadway, New York, NY 10038", "review"=>{"name"=>"Irving Farms", "drink_ordered"=>"The Farm House", "price"=>"4", "rating"=>"4", "address"=>"200 Broadway, New York, NY 10038"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "drink_ordered", "price", "rating", "address") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Irving Farms"], ["drink_ordered", "The Farm House"], ["price", 4.0], ["rating", 4], ["address", "200 Broadway, New York, NY 10038"]]
+  [1m[35m (7.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 11ms (ActiveRecord: 8.4ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:46:05 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (1.2ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (2.13ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:46:45 -0400
+Processing by Api::V1::ReviewsController#create as JSON
+  Parameters: {"name"=>"Birch Coffee", "drink_ordered"=>"Latte", "price"=>"3", "rating"=>"3", "address"=>"8 Spruce Street, Entrance on Beekman Street, New York, NY 10038", "review"=>{"name"=>"Birch Coffee", "drink_ordered"=>"Latte", "price"=>"3", "rating"=>"3", "address"=>"8 Spruce Street, Entrance on Beekman Street, New York, NY 10038"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "reviews" ("name", "drink_ordered", "price", "rating", "address") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Birch Coffee"], ["drink_ordered", "Latte"], ["price", 3.0], ["rating", 3], ["address", "8 Spruce Street, Entrance on Beekman Street, New York, NY 10038"]]
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 204 No Content in 11ms (ActiveRecord: 8.1ms)
+
+
+Started GET "/api/v1/reviews" for 127.0.0.1 at 2017-10-25 16:47:54 -0400
+Processing by Api::V1::ReviewsController#index as */*
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews"[0m
+No serializer found for resource: #<Review id: 23, name: "Starbucks", drink_ordered: "ice coffee", price: 5.5, rating: 2, address: "110 Pearl St, New York, NY 10005">
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with Review::ActiveRecord_Relation (2.04ms)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.4ms)
+
+
