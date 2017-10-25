@@ -10,6 +10,10 @@ class Api::V1::ReviewsController < ApplicationController
     @review = Review.create(review_params)
   end
 
+  def edit
+    @review = Review.find(params[:id])
+  end
+
   def update
     @review = Review.find(params[:id])
 
@@ -19,6 +23,11 @@ class Api::V1::ReviewsController < ApplicationController
     else
       render json: {errors: @review.errors.full_messages}, status: 422
     end
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
   end
 
   private
